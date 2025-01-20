@@ -1,0 +1,17 @@
+{
+    "IP": [
+        "<your ip list>",
+        "<another ip if you need>",
+        "<third ip>"
+    ],
+    "PHONE": [
+        {
+            "from": "whatsapp:<from api number>",
+            "to": "whatsapp:+380<your selected number>",
+            "account_sid": "<account sid from api>",
+            "auth_token": "<authentification token>"
+        }
+    ],
+    "account_sid": "<account sid from api>",
+    "auth_token": "<authentification token>"
+}
