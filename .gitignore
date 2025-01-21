@@ -3,3 +3,4 @@
 venv
 logs
 config.json
+__pycache__

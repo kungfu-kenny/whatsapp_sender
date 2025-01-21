@@ -1,6 +1,5 @@
 import os
 import json
-import logging
 import traceback
 
 import requests
@@ -39,6 +38,8 @@ def send_request(ip: str) -> dict:
         dict_used.update(
             requests.get(f"http://{ip}/api/battery").json()
         )
+
+        #TODO for test only
         # dict_used.update(
         #     {
         #         "voltage": '14.00',
@@ -99,8 +100,7 @@ def produce_log(list_log: list[dict[str]], list_send: list[dict[str]]) -> None:
         print()
         print()
 
-
-if __name__ == "__main__":
+def send_values():
     produce_basic()
     if not os.path.exists(CONFIG):
         print('You need to create config.json')
@@ -114,3 +114,7 @@ if __name__ == "__main__":
             print('===============================')
             list_res.append(send_request(ip))
         produce_log(list_res, dict_used["PHONE"])
+
+
+if __name__ == "__main__":
+    send_values()
