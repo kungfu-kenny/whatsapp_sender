@@ -44,14 +44,22 @@ def send_request(ip: str) -> dict:
         #     {
         #         "voltage": '14.00',
         #         "capacity": '41.67',
-        #         "pin_voltage": '2.51',
-        #         "pin_coefficient": '5.58',
+        #         # "pin_voltage": '2.51',
+        #         # "pin_coefficient": '5.58',
         #     }
         # )
     except Exception:
         print(f'Error of requests: {traceback.format_exc()}')
         print()
         print()
+        dict_used.update(
+            {
+                "voltage": 'Broken request',
+                "capacity": 'Broken request',
+                # "pin_voltage": 'Broken request',
+                # "pin_coefficient": 'Broken request',
+            }
+        )
     finally:
         return dict_used
 
@@ -65,24 +73,26 @@ def produce_log(list_log: list[dict[str]], list_send: list[dict[str]]) -> None:
                     "ip",
                     "voltage",
                     "capacity",
-                    "pin_voltage",
-                    "pin_coefficient",
+                    # "pin_voltage",
+                    # "pin_coefficient",
                 ]
             }
             message_whatsapp = \
                 f"Datetime: {date_write}\n"\
                 f"Voltage: {dict_log['voltage']}\n"\
                 f"Capacity: {dict_log['capacity']}\n"\
-                f"Pin Voltage: {dict_log['pin_voltage']}\n"\
-                f"Pin coeficient: {dict_log['pin_coefficient']}\n"\
                 f"Website: {dict_log['ip']}"
+            
+                # f"Pin Voltage: {dict_log['pin_voltage']}\n"\
+                # f"Pin coeficient: {dict_log['pin_coefficient']}\n"\
             message_log =  \
                 f"{date_write} | "\
                 f"Voltage: {dict_log['voltage']} | "\
                 f"Capacity: {dict_log['capacity']} | "\
-                f"Pin Voltage: {dict_log['pin_voltage']} | "\
-                f"Pin coeficient: {dict_log['pin_coefficient']} | "\
                 f"Website: {dict_log['ip']}\n"
+            
+            # f"Pin Voltage: {dict_log['pin_voltage']} | "\
+            # f"Pin coeficient: {dict_log['pin_coefficient']} | "\
             with open(FILE_LOG, 'a') as file_log:
                 file_log.write(
                     message_log
