@@ -16,19 +16,14 @@ FOLDER_OUTPUT = os.path.join(
     os.getcwd(),
     'logs',
 )
-FOLDER_OUTPUT_DAY = os.path.join(
-    FOLDER_OUTPUT,
-    datetime.now().strftime("%Y-%m-%d"),
-)
 FILE_LOG = os.path.join(
-    FOLDER_OUTPUT_DAY,
-    f"{datetime.now().strftime('%H-%M')}.log"
+    FOLDER_OUTPUT,
+    f"{datetime.now().strftime('%Y-%m-%d')}.log"
 )
 
 def produce_basic():
     for i in [
         FOLDER_OUTPUT,
-        FOLDER_OUTPUT_DAY,
     ]:
         os.path.exists(i) or os.mkdir(i)
 
