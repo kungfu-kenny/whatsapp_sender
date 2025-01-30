@@ -93,13 +93,18 @@ def produce_log(list_log: list[dict[str]], list_send: list[dict[str]]) -> None:
                     message_log
                 )    
 
-            for phone in list_send:
-                client = Client(phone["account_sid"], phone["auth_token"])
-                client.messages.create(
-                    body=message_whatsapp,
-                    from_ = phone["from"],
-                    to = phone["to"],
-                )
+            try:
+                for phone in list_send:
+                    client = Client(phone["account_sid"], phone["auth_token"])
+                    client.messages.create(
+                        body=message_whatsapp,
+                        from_ = phone["from"],
+                        to = phone["to"],
+                    )
+            except Exception:
+                print(f"Error of whatapp sending:{traceback.format_exc()}")
+                print()
+                print()
     except Exception:
         print(f'Error of log sending: {traceback.format_exc()}')
         print()
