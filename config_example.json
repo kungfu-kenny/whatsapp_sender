@@ -11,7 +11,5 @@
             "account_sid": "<account sid from api>",
             "auth_token": "<authentification token>"
         }
-    ],
-    "account_sid": "<account sid from api>",
-    "auth_token": "<authentification token>"
+    ]
 }
